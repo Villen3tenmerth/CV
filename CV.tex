@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
+%
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+							
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
+\usepackage{hyperref}
+
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
+
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
+
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
+
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
+
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
+
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
+
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value	
+		
+\newcommand{\EducationEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\colorbox{Black}{%
+			\parbox{6em}{%
+			\hfill\color{White}#2}} \par  % Duration
+		\noindent \textit{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\colorbox{Blue}{\color{White}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
+
+%%% Begin Document
+%%% ------------------------------------------------------------
+\begin{document}
+% you can upload a photo and include it here...
+%\begin{wrapfigure}{l}{0.5\textwidth}
+%	\vspace*{-2em}
+%		\includegraphics[width=0.15\textwidth]{photo}
+%\end{wrapfigure}
+
+\MyName{Gleb Tkach}
+
+\sepspace
+
+%%% Personal details
+%%% ------------------------------------------------------------
+\NewPart{Personal details}{}
+
+\PersonalEntry{Location}{St. Petersburg, Russia}
+\PersonalEntry{Birth}{December 27, 2000}
+\PersonalEntry{Phone}{+7(981)179-95-17}
+\PersonalEntry{E-Mail}{\url{vovkineo@mail.ru}}
+
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
+
+\EducationEntry{Baccalaureate}{2018-2022}{ITMO University, St. Petersburg, Russia}{Computer science}
+\sepspace
+
+%%% Additional education
+%%% ------------------------------------------------------------
+\NewPart{Additional education}{}
+
+\EducationEntry{Summer Computer School}{2016-2017}{\href{https://lksh.ru/}{lksh.ru} }{Studying algorithms and data structures}
+\sepspace
+
+\EducationEntry{Informatics winter camp}{2017}{\href{https://olymp.innopolis.ru/shop/informatics/}{olymp.innopolis.ru}}{Innopolis training camp}{Studying algorithms and data structures}
+\sepspace
+
+\EducationEntry{Moscow Workshops Juniors}{2018}{MIPT training camp}{Preparing for competitive programming olympiads}
+\sepspace
+
+%%% Skills
+%%% ------------------------------------------------------------
+\NewPart{Skills}{}
+
+\SkillsEntry{Programming Languages}{C++, Java, Python}
+\sepspace
+
+\SkillsEntry{Technical skills}{Algorithms and Data Structures}
+\SkillsEntry{}{ML algorithms knowledge}
+\SkillsEntry{}{Basic web-programming}
+\SkillsEntry{}{Basic experience with frameworks (Spring, Vue.js)}
+\SkillsEntry{}{Experience with Bash}
+\sepspace
+
+\SkillsEntry{Languages}{Russian (native), English (C1)}
+\sepspace
+
+%%% Projects
+%%% ------------------------------------------------------------
+\NewPart{Projects}{}
+
+\WorkEntry{Fast hash-based additive accumulators}{\href{https://github.com/IvanMaslov/AdditiveAccumulator}{source link}}{Cryptographic accumulators. Based on \href{https://github.com/bigspider/accumulator/blob/master/docs/paper-draft.pdf}{this} article}{C++}
+\sepspace
+
+%%% Achievements
+%%% ------------------------------------------------------------
+\NewPart{Achievements}{}
+
+\EducationEntry{Northern Eurasia Finals}{2019/20}{Third degree diploma}{$60^{th}$ place}
+\sepspace
+
+\EducationEntry{All-Siberian Programming Contest named after I.V. Pottosin}{2019}{Second degree diploma}{$22^{nd}$ place}
+\sepspace
+
+\EducationEntry{Individual Olympiad in informatics}{2018}{First degree diploma}{$21^{st}$ place out of 1000+}
+\sepspace
+
+%%% Additional information
+%%% ------------------------------------------------------------
+\NewPart{Additional information}{}
+
+\SkillsEntry{GitHub}{\href{https://github.com/Villen3tenmerth}{https://github.com/Villen3tenmerth} }
+\sepspace
+
+\SkillsEntry{Telegram}{\href{https://t.me/Villen3tenmerth}{https://t.me/Villen3tenmerth} }
+
+\end{document}
